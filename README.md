@@ -1,4 +1,4 @@
-![ProxyPI](proxypi.jpg)
+![ProxyPI](proxypi.png)
 
 ## What it is
 
