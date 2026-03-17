@@ -4,8 +4,8 @@ import { homedir } from "os";
 import type { HealingRecord, MemoryStore } from "../types.js";
 import { logger } from "../utils/logger.js";
 
-// Store in ~/.proxipi/memory.json so it persists across sessions
-const STORE_DIR = join(homedir(), ".proxipi");
+// Store in ~/.proxypi/memory.json so it persists across sessions
+const STORE_DIR = join(homedir(), ".proxypi");
 const STORE_PATH = join(STORE_DIR, "memory.json");
 
 function ensureDir() {

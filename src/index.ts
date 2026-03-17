@@ -15,15 +15,15 @@ import { logger, applyRainbowToBanner, colorizeBannerFooter } from "./utils/logg
 import type { ProxyRequest, HttpMethod } from "./types.js";
 
 const server = new McpServer({
-  name: "proxipi",
+  name: "proxypi",
   version: "1.0.0",
 });
 
-// ─── Tool 1: proxipi_request ──────────────────────────────────────────────────
+// ─── Tool 1: proxypi_request ──────────────────────────────────────────────────
 // Send a request to any REST API. Auto-heals on failure.
 
 server.tool(
-  "proxipi_request",
+  "proxypi_request",
   `Send a request to any REST API. If the request fails, ProxyPI diagnoses the error,
 patches the request using Claude, and retries automatically — up to 3 times.
 Learned fixes are remembered and applied instantly next time without calling Claude.
@@ -97,7 +97,7 @@ Examples:
       return { content: [{ type: "text", text: lines.join("\n") }] };
     } catch (err) {
       const msg = formatApiError(err);
-      logger.error("proxipi_request failed", msg);
+      logger.error("proxypi_request failed", msg);
       return {
         content: [
           {
@@ -110,11 +110,11 @@ Examples:
   }
 );
 
-// ─── Tool 2: proxipi_history ──────────────────────────────────────────────────
+// ─── Tool 2: proxypi_history ──────────────────────────────────────────────────
 // Show past healing records — what broke, what was fixed.
 
 server.tool(
-  "proxipi_history",
+  "proxypi_history",
   "Show the history of auto-healed API requests. Optionally filter by API host.",
   {
     host: z
@@ -168,7 +168,7 @@ server.tool(
       return { content: [{ type: "text", text: lines.join("\n") }] };
     } catch (err) {
       const msg = formatApiError(err);
-      logger.error("proxipi_history failed", msg);
+      logger.error("proxypi_history failed", msg);
       return {
         content: [{ type: "text", text: `History failed: ${msg}` }],
       };
@@ -176,11 +176,11 @@ server.tool(
   }
 );
 
-// ─── Tool 3: proxipi_replay ───────────────────────────────────────────────────
+// ─── Tool 3: proxypi_replay ───────────────────────────────────────────────────
 // Re-run a previously failed request using its stored patch.
 
 server.tool(
-  "proxipi_replay",
+  "proxypi_replay",
   "Replay a previously healed request. Useful for testing that a fix still works after an API update.",
   {
     host: z
@@ -236,7 +236,7 @@ server.tool(
       return { content: [{ type: "text", text: lines.join("\n") }] };
     } catch (err) {
       const msg = formatApiError(err);
-      logger.error("proxipi_replay failed", msg);
+      logger.error("proxypi_replay failed", msg);
       return {
         content: [{ type: "text", text: `Replay failed: ${msg}` }],
       };
@@ -244,10 +244,10 @@ server.tool(
   }
 );
 
-// ─── Tool 4: proxipi_clear ────────────────────────────────────────────────────
+// ─── Tool 4: proxypi_clear ────────────────────────────────────────────────────
 
 server.tool(
-  "proxipi_clear",
+  "proxypi_clear",
   "Clear all stored healing records from memory.",
   {},
   async () => {
@@ -258,7 +258,7 @@ server.tool(
       };
     } catch (err) {
       const msg = formatApiError(err);
-      logger.error("proxipi_clear failed", msg);
+      logger.error("proxypi_clear failed", msg);
       return {
         content: [{ type: "text", text: `Clear failed: ${msg}` }],
       };

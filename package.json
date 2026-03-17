@@ -1,5 +1,5 @@
 {
-  "name": "proxipi",
+  "name": "proxypi",
   "version": "1.0.0",
   "description": "Self-healing API proxy MCP — your API calls, but they never actually break.",
   "type": "module",
@@ -11,7 +11,7 @@
     "src/banner.txt"
   ],
   "bin": {
-    "proxipi": "./dist/index.js"
+    "proxypi": "dist/index.js"
   },
   "main": "./dist/index.js",
   "scripts": {
@@ -29,6 +29,14 @@
     "cursor"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexisLspk/proxypi-mcp.git"
+  },
+  "homepage": "https://github.com/AlexisLspk/proxypi-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/AlexisLspk/proxypi-mcp/issues"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@modelcontextprotocol/sdk": "^1.0.0",
